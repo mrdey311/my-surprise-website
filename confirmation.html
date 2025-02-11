@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.onload = function() {
+            // Get all the query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const choice = urlParams.get('choice');
+            const dishOrMovie = urlParams.get('dishOrMovie');
+            const date = urlParams.get('date');
+
+            // Display the information on the page
+            const choiceText = choice === 'cook' ? 'Cook Together' : 'Movie Date';
+            const dishOrMovieText = dishOrMovie === 'pasta' ? 'Pasta' : dishOrMovie === 'chowmein' ? 'Chowmein' : dishOrMovie === 'romantic' ? 'Romantic Movie' : 'Horror Movie';
+
+            document.getElementById('choice').textContent = choiceText;
+            document.getElementById('dishOrMovie').textContent = dishOrMovieText;
+            document.getElementById('selectedDate').textContent = date;
+        }
+    </script>
+    <style>
+        /* Fireworks animation */
+        @keyframes fireworks {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(207, 14, 14, 0.5), 0 0 0 0 rgba(255, 255, 0, 0.5), 0 0 0 0 rgba(0, 255, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.8;
+                box-shadow: 0 0 20px 15px rgba(209, 97, 17, 0.7), 0 0 20px 15px rgba(255, 255, 0, 0.7), 0 0 20px 15px rgba(0, 255, 255, 0.7);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2);
+                box-shadow: 0 0 30px 20px rgba(188, 186, 17, 0), 0 0 30px 20px rgba(255, 255, 0, 0), 0 0 30px 20px rgba(0, 255, 255, 0);
+            }
+        }
+
+        /* Firework sparkles */
+        .sparkle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 0, 0, 1);
+            animation: fireworks 1.5s infinite;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Fireworks placement around the card */
+        .sparkle:nth-child(1) {
+            width: 50px;
+            height: 50px;
+            top: 10%;
+            left: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(2) {
+            width: 70px;
+            height: 70px;
+            top: 10%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            left: 10%;
+            animation-delay: 1.5s;
+        }
+
+        .sparkle:nth-child(4) {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            left: 90%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(5) {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 2.5s;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #0f0f0f;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Container styling */
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            position: relative; /* Ensures sparkles are positioned around this container */
+            z-index: 2;
+        }
+
+        .summary {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .summary p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .back-btn {
+            background-color: #ff6347;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #ff4500;
+            transform: scale(1.1);
+        }
+
+        .back-btn:active {
+            transform: scale(0.95);
+        }
+
+        .back-btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sparkles representing fireworks -->
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+
+    <div class="container">
+        <p2>Your Booking Summary</p2>
+        
+        <div class="summary">
+            <p><strong>Activity:</strong> <span id="choice"></span></p>
+            <p><strong>Your Selection:</strong> <span id="dishOrMovie"></span></p>
+            <p><strong>Selected Date:</strong> <span id="selectedDate"></span></p>
+        </div>
+<p3>Take a screenshot and send to your boyfriend</p3>
+        <button class="back-btn" onclick="window.history.back()">Go Back</button>
+    </div>
+
+    <div class="fireworks-container">
+        <div class="firecracker"></div>
+        <div class="firecracker"></div>
+        <div class="firecracker"></div>
+        <div class="firecracker"></div>
+        <div class="firecracker"></div>
+    </div>
+    
+</body>
+</html>

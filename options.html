@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Dish/Movie</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // This function reads the query parameters from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // This function adjusts the content based on the user's choice
+        window.onload = function() {
+            const choice = getQueryParam('choice');  // Get the 'choice' parameter from URL
+            const cardsContainer = document.querySelector('.card-container');
+            
+            if (choice === 'cook') {
+                // Show the cards for Cook Together
+                cardsContainer.innerHTML = `
+                    <div class="card" onclick="location.href='date_page.html?choice=cook&dishOrMovie=pasta';">
+                        <img src="https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19739.jpg" alt="Pasta" class="card-img">
+                        <div class="card-text">Pasta</div>
+                    </div>
+                    <div class="card" onclick="location.href='date_page.html?choice=cook&dishOrMovie=chowmein';">
+                        <img src="https://b3067249.smushcdn.com/3067249/wp-content/uploads/2021/09/Chicken-Chow-Mein-1-1536x864.jpg" alt="Chowmein" class="card-img">
+                        <div class="card-text">Chowmein</div>
+                    </div>
+                `;
+            } else if (choice === 'movie') {
+                // Show the cards for Movie Date
+                cardsContainer.innerHTML = `
+                    <div class="card" onclick="location.href='date_page.html?choice=movie&dishOrMovie=romantic';">
+                        <img src="https://www.digitaltrends.com/wp-content/uploads/2023/09/zTTgI92GGVtYIGunown2oWOUDES.jpg?p=1#038;p=1.jpg" alt="Romantic Movie" class="card-img">
+                        <div class="card-text">Romantic Movie</div>
+                    </div>
+                    <div class="card" onclick="location.href='date_page.html?choice=movie&dishOrMovie=horror';">
+                        <img src="https://wired.me/wp-content/uploads/2023/10/346850-evil-dead-franchise.jpg" alt="Horror Movie" class="card-img">
+                        <div class="card-text">Horror Movie</div>
+                    </div>
+                `;
+            } else {
+                // Default message if no choice is passed
+                cardsContainer.innerHTML = "<p>Sorry, no choice was made.</p>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>What would you like to choose?</h2>
+        
+        <div class="card-container">
+            <!-- Cards will be dynamically injected here based on the choice -->
+        </div>
+    </div>
+</body>
+</html>
